@@ -16,6 +16,7 @@
         /// Get a list of related node Ids with duplicates removed (esp. for a bi-directional relation)
         /// </summary>
         /// <param name="LookupNodeId">Id of node to get relations for</param>
+        /// <param name="UmbRelationService">RelationService reference</param>
         /// <param name="RelationAlias">If blank will check all relations</param>
         /// <returns></returns>
         public static IEnumerable<int> GetDistinctRelatedNodeIds(int LookupNodeId, IRelationService UmbRelationService, string RelationAlias = "")

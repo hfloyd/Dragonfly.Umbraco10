@@ -43,7 +43,7 @@
                             var x = (T)item;
                             list.Add(x);
                         }
-                        catch (Exception e)
+                        catch 
                         {
                             //ignore
                         }
@@ -75,7 +75,7 @@
                             var x = (T)item;
                             list.Add(x);
                         }
-                        catch (Exception e)
+                        catch 
                         {
                             //ignore
                         }
@@ -552,9 +552,6 @@
         /// <param name="PropertyAlias">
         /// The property alias.
         /// </param>
-        /// <param name="Umbraco">
-        /// The <see cref="UmbracoHelper"/>.
-        /// </param>
         /// <returns>
         /// The <see cref="IPublishedContent"/> from the content picker.
         /// </returns>
@@ -686,7 +683,7 @@
 
         public static IPublishedContent GetFirstMatchingPropValueContent(this IPublishedContent Content, IEnumerable<string> PropsToTest)
         {
-            var defaultVal = 0;
+            //var defaultVal = 0;
             IPublishedContent returnVal = null;
             bool flag = true;
             foreach (string propertyAlias in PropsToTest)

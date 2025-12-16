@@ -29,7 +29,8 @@
         /// <summary>
         /// Service to retrieve Media Nodes via various search methods
         /// </summary>
-        /// <param name="umbHelper">UmbracoHelper passed-in</param>
+        /// <param name="UmbHelper">UmbracoHelper reference</param>
+        /// <param name="Logger">Logger reference</param>
         public MediaFinderService(UmbracoHelper UmbHelper, ILogger<MediaFinderService> Logger)
         {
             _umbracoHelper = UmbHelper;
@@ -94,7 +95,7 @@
                     }
                 }
             }
-            catch (Exception e)
+            catch 
             {
                 //skip
             }
@@ -274,9 +275,9 @@
         #region Get By File Name
 
         /// <summary>
-        /// Lookup Media Image by File Path
+        /// Lookup Media Image by Filename
         /// </summary>
-        /// <param name="MediaFilePath">File Path to search for</param>
+        /// <param name="MediaFilename">File to search for</param>
         /// <param name="StartNodeId">ID of MediaNode to limit search to descendants</param>
         /// <returns></returns>
         public IEnumerable<SimpleMediaInfo> GetImageInfoByFilename(string MediaFilename, int StartNodeId = 0)
@@ -285,9 +286,9 @@
         }
 
         /// <summary>
-        /// Lookup Media File by File Path
+        /// Lookup Media File by Filename
         /// </summary>
-        /// <param name="MediaFilePath">File Path to search for</param>
+        /// <param name="MediaFilename">File to search for</param>
         /// <param name="StartNodeId">ID of MediaNode to limit search to descendants</param>
         /// <returns></returns>
         public IEnumerable<SimpleMediaInfo> GetFileInfoByFilename(string MediaFilename, int StartNodeId = 0)
@@ -296,9 +297,9 @@
         }
 
         /// <summary>
-        /// Lookup Media Node by File Path
+        /// Lookup Media Node by Filename   
         /// </summary>
-        /// <param name="MediaFilePath">File Path to search for</param>
+        /// <param name="MediaFilename">File to search for</param>
         /// <param name="StartNodeId">ID of MediaNode to limit search to descendants</param>
         /// <param name="MediaTypeAlias">Alias of MediaType to return</param>
         /// <returns></returns>

@@ -163,9 +163,13 @@
 		/// Return a string representation of the path to the Node
 		/// </summary>
 		/// <param name="UmbContentNode">Node to Get a Path for</param>
+		/// <param name="ErrorMessage">Var to hold returned Error Message (will be empty string if no error)</param>
 		/// <param name="Separator">String to separate parts of the path</param>
+		/// <param name="UmbContentService">ContentService reference</param>
+		/// <param name="UmbMediaService">MediaService reference</param>
 		/// <returns></returns>
-		public static string NodePath(IPublishedContent UmbContentNode, IContentService UmbContentService, IMediaService UmbMediaService, out string ErrorMessage, string Separator = " » ")
+		public static string NodePath(IPublishedContent UmbContentNode, IContentService UmbContentService, IMediaService UmbMediaService,
+			out string ErrorMessage, string Separator = " » ")
 		{
 			var functionName = $"{ThisClassName}.NodePath";
 			ErrorMessage = "";
@@ -206,9 +210,12 @@
 		/// Return a string representation of the path to the Node
 		/// </summary>
 		/// <param name="UmbContentNode">Node to Get a Path for</param>
+		/// <param name="ErrorMessage">Var to hold returned Error Message (will be empty string if no error)</param>
 		/// <param name="Separator">String to separate parts of the path</param>
+		/// <param name="UmbContentService">ContentService reference</param>
 		/// <returns></returns>
-		public static string NodePath(IContent UmbContentNode, IContentService UmbContentService, out string ErrorMessage, string Separator = " » ")
+		public static string NodePath(IContent UmbContentNode, IContentService UmbContentService, 
+			out string ErrorMessage, string Separator = " » ")
 		{
 			ErrorMessage = "";
 			string nodePathString = String.Empty;
@@ -234,6 +241,7 @@
 		/// Return a string representation of the path to the Node
 		/// </summary>
 		/// <param name="PathIdsCsv">Comma-separated list of NodeIds representing the Path</param>
+		/// <param name="UmbContentService">ContentService reference</param>
 		/// <param name="Separator">String to separate parts of the path</param>
 		/// <returns></returns>
 		private static string ContentNodePathFromPathIdsCsv(string PathIdsCsv, IContentService UmbContentService, string Separator = " » ")
@@ -260,7 +268,9 @@
 		/// Return a string representation of the path to the Node
 		/// </summary>
 		/// <param name="UmbMediaNode">Node to Get a Path for</param>
+		/// <param name="ErrorMessage">Var to hold returned Error Message (will be empty string if no error)</param>
 		/// <param name="Separator">String to separate parts of the path</param>
+		/// <param name="UmbMediaService">MediaService reference</param>
 		/// <returns></returns>
 		public static string MediaPath(IPublishedContent UmbMediaNode, IMediaService UmbMediaService, out string ErrorMessage, string Separator = " » ")
 		{
