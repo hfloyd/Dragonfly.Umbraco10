@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0;net10.0</TargetFrameworks>
 		<!--<TargetFramework>net6.0</TargetFramework>-->
 		<!--<TargetFramework>net8.0</TargetFramework>-->
 		<Nullable>enable</Nullable>
@@ -19,7 +19,7 @@
 		<RepositoryUrl>https://github.com/hfloyd/Dragonfly.Umbraco10</RepositoryUrl>
 
 		<PackageIcon>Dragonfly-UmbracoHelpers-128.png</PackageIcon>
-		<PackageTags>Umbraco;umbraco-marketplace;Umbraco-10;Umbraco-11;Umbraco-12;Umbraco-13</PackageTags>
+		<PackageTags>Umbraco;umbraco-marketplace;Umbraco-10;Umbraco-11;Umbraco-12;Umbraco-13;Umbraco-14;Umbraco-15;Umbraco-16;Umbraco-17</PackageTags>
 
 	</PropertyGroup>
 
@@ -38,10 +38,10 @@
 	<PropertyGroup>
 		<RootNamespace>Dragonfly</RootNamespace>
 		<AssemblyName>Dragonfly.Umbraco10</AssemblyName>
-		<Version>2.0.0</Version>
+		<Version>2.1.0</Version>
 		<AssemblyVersion>$(Version)</AssemblyVersion>
 		<FileVersion>$(Version)</FileVersion>
-		<PackageReleaseNotes>Adding multi-target support</PackageReleaseNotes>
+		<PackageReleaseNotes>Adding support for versions up to Umbraco 17</PackageReleaseNotes>
 		
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>symbols.nupkg</SymbolPackageFormat>
@@ -77,15 +77,28 @@
 		<PackageReference Include="Umbraco.Cms.Web.Common" Version="[10.0.1,13.0.0)" PrivateAssets="All" />
 	</ItemGroup>
 
-	<!--Umbraco 13-->
+	<!--Umbraco 13/14-->
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
-		<PackageReference Include="Umbraco.Cms.Core" Version="[13.0.1,14.0.0)" />
-		<PackageReference Include="Umbraco.Cms.Web.Common" Version="[13.0.1,14.0.0)" PrivateAssets="All" />
+		<PackageReference Include="Umbraco.Cms.Core" Version="[13.0.1,15.0.0)" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="[13.0.1,15.0.0)" PrivateAssets="All" />
+	</ItemGroup>
+
+	<!--Umbraco 15/16-->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+		<PackageReference Include="Umbraco.Cms.Core" Version="[15.0.0,17.0.0)" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="[15.0.0,17.0.0)" PrivateAssets="All" />
+	</ItemGroup>
+
+	<!--Umbraco 17-->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Umbraco.Cms.Core" Version="[17.0.0,18.0.0)" />
+		<PackageReference Include="Umbraco.Cms.Web.Common" Version="[17.0.0,18.0.0)" PrivateAssets="All" />
 	</ItemGroup>
 
 	<!--Any Umbraco Version -->
 	<ItemGroup>
-		<PackageReference Include="Dragonfly.Net6" Version="2.0.0" />
+		<PackageReference Include="Dragonfly.Net6" Version="2.2.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.3.9" />
 	</ItemGroup>
 
 	<!--Include App_Plugins & targets file-->
@@ -114,6 +127,7 @@
 
 		<EmbeddedResource Remove="UmbracoModels\DataTypes\**" />
 		<EmbeddedResource Remove="UmbracoModels\MvcFakes\**" />
+	
 		<None Remove="UmbracoModels\DataTypes\**" />
 		<None Remove="UmbracoModels\MvcFakes\**" />
 	</ItemGroup>
@@ -131,7 +145,7 @@
 
 	<Import Project="..\Custom.targets" />
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
 		<Exec Command="REM XCOPY /s /y &quot;$(TargetDir)$(TargetName)*.*&quot; &quot;C:\Users\XX\&quot;" />
-	</Target>
+	</Target>-->
 </Project>
